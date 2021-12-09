@@ -100,6 +100,7 @@
 
 - State:
 - Props:
+  * message:String eg. "Deleting"
 - Used by:
 
 ### Appointment/Error
