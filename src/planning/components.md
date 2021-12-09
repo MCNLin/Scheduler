@@ -107,6 +107,8 @@
 
 - State:
 - Props:
+  * message:String eg. "Could not delete appointment."
+  * onClose:Function to be called when the user clicks the Close button
 - Used by:
 
 ### Appointment/Confirm
