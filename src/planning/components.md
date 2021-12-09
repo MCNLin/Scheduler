@@ -93,7 +93,19 @@
 ### Appointment/Form
 
 - State:
+  * student:String
+  * interviewer:Number
+
+- Action?:
+  * setStudent:Function
+  * setInterviewer:Function
 - Props:
+  * student:String
+  * interviewers:Array
+  * interviewer:Number
+  * onSave:Function
+  * onCancel:Function
+
 - Used by:
 
 ### Appointment/Status
