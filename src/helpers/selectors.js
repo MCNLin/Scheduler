@@ -1,3 +1,4 @@
+
 export function getAppointmentsForDay(state,day) {
   
   const filteredDays = state.days.find(days => days.name === day);
@@ -12,5 +13,3 @@ export function getAppointmentsForDay(state,day) {
     return appointments;
 };
   
-
-

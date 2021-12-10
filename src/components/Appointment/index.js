@@ -7,7 +7,6 @@ import 'components/Appointment/styles.scss'
 
 export default function Appointment (props) {
 
-console.log('props in APP/index--->', props)
   return (
    
     <article className="appointment">
