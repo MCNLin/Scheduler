@@ -10,7 +10,6 @@ export default function InterviewListItem (props) {
     'interviewers__item--selected': props.selected
   })
 
-  console.log("PROOPPSSSS--->",props)
 
   return (
     <li onClick={props.setInterviewer} className={interviewerClass}>
