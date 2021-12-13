@@ -5,7 +5,7 @@ import 'components/InterviewerList.scss';
 
 export default function InterviewerList(props) {
   
-  console.log("props in interviewlist====>" , props)
+  // console.log("props in interviewlist====>" , props)
   const interviewerArray = props.interviewers.map((interviewer) => {
     
     return (
