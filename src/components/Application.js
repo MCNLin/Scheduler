@@ -34,6 +34,7 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={interviewers}
+        bookInterview ={bookInterview}
       />
     );
   });
@@ -54,10 +55,14 @@ export default function Application(props) {
           appointments: all[1].data,
           interviewers: all[2].data
         }))
-      console.log('RESULTS',all)
+      // console.log('RESULTS',all)
     })
   },[]);
   
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+  }
+
   return (
     <main className="layout">
       <section className="sidebar">
