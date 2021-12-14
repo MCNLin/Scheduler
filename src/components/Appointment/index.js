@@ -20,6 +20,8 @@ const SAVING = 'SAVING';
 const DELETING = 'DELETING'
 const CONFIRM = 'CONFIRM'
 const EDIT = 'EDIT'
+const ERROR_SAVE = 'ERROR_SAVE'
+const ERROR_DELETE = 'ERROR_DELETE'
 
 
 
@@ -38,24 +40,26 @@ export default function Appointment(props) {
 
   //saving an appointment
   function save(name, interviewer) {
+    
+    transition(SAVING);
 
     const interview = {
       student: name,
       interviewer
     };
-    transition(SAVING);
 
     props.bookInterview(props.id, interview)
-    .then(()=> transition(SHOW));
-  }
-
+    .then(()=>{transition(SHOW)})
+    .catch(() => transition(ERROR_SAVE));
+};
   //deleting an appointment
   function deleteApp(name, interviewer) {
     transition(DELETING)
     props.cancelInterview(props.id)
     .then(() => {
       transition(EMPTY)
-    });
+    })
+    .catch(() => transition(ERROR_DELETE))
   }
 
 
