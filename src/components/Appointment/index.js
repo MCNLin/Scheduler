@@ -7,6 +7,8 @@ import useVisualMode from "hooks/useVisualMode";
 
 
 
+
+
 import 'components/Appointment/styles.scss'
 import Status from "./Status";
 import Confirm from "./Confirm";
@@ -25,10 +27,13 @@ export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   )
+  const confirm = () => {
+    transition(CONFIRM)
+  };
 
   //saving an appointment
   function save(name, interviewer) {
-    
+
     const interview = {
       student: name,
       interviewer
@@ -57,12 +62,12 @@ export default function Appointment(props) {
         <Show
         student={props.interview.student}
         interviewer={props.interview.interviewer}
-        onDelete={deleteApp}
+        onDelete={confirm}
         />
         )}
         {mode === CREATE && <Form 
         interviewers={props.interviewers} 
-        onCancel={back(EMPTY)}
+        onCancel={() => back(EMPTY)}
         onSave={save} />}
 
         {mode === SAVING && <Status message={"Saving"}/>}
@@ -71,6 +76,7 @@ export default function Appointment(props) {
         
         {mode === CONFIRM && <Confirm
         onCancel={() => back()}
+        message = {"Are you sure you would like to delete?"}
         onConfirm={deleteApp}/>}
     </article>
 
