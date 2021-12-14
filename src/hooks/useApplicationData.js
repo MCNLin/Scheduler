@@ -1,8 +1,9 @@
-import React,{useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import axios from "axios";
 
 export default function useApplicationData () {
 
+  
   
   const [state, setState] = useState({
     day: "Monday",
@@ -11,6 +12,13 @@ export default function useApplicationData () {
     interviewers: {}
     
   });
+
+  const fetchFreeSpace = (appointments) => { 
+    const appIDs = state.days.filter(day => day.name === state.day);
+    const todayApp = appIDs[0].appointments;
+    const freeSpace = todayApp.filter(app => !appointments[app].interview).length
+    return freeSpace 
+  }
   
   function bookInterview(id, interview) {
     console.log(id, interview);
@@ -23,10 +31,20 @@ export default function useApplicationData () {
       ...state.appointments,
       [id]: appointment
     };
+
+
+    const days = [...state.days,  
+    ]
+
+    const dayIndex = state.days.findIndex((day) => 
+      day.appointments.includes(id)
+    )
     
+    days[dayIndex].spots = fetchFreeSpace(appointments)
+
     return axios.put(`/api/appointments/${id}`, appointment)
     .then(()=> {
-      setState({...state, appointments})
+      setState({...state, appointments, days})
     }) 
   }
   
@@ -37,10 +55,21 @@ export default function useApplicationData () {
     const appointments = {...state.appointments,
       [id]: appointment
     };
+
+    const days = [...state.days,  
+    ]
+
+    const dayIndex = state.days.findIndex((day) => 
+      day.appointments.includes(id)
+    )
+    
+    days[dayIndex].spots = fetchFreeSpace(appointments)
     return axios.delete(`api/appointments/${id}`)
     .then(() => {
-      setState({...state, appointments})
+      setState({...state, appointments, days})
     }) 
+
+
   }
   
   const setDay = day => setState({ ...state, day });
