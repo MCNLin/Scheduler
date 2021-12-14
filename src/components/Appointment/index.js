@@ -8,10 +8,13 @@ import useVisualMode from "hooks/useVisualMode";
 
 
 import 'components/Appointment/styles.scss'
+import Status from "./Status";
 
 const EMPTY = 'EMPTY';
 const SHOW = 'SHOW';
 const CREATE = 'CREATE';
+const SAVING = 'SAVING'
+
 
 
 export default function Appointment(props) {
@@ -25,7 +28,8 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-        
+    transition(SAVING);
+
     props.bookInterview(props.id, interview)
     .then(()=> transition(SHOW));
   }
@@ -46,6 +50,7 @@ export default function Appointment(props) {
         interviewers={props.interviewers} 
         onCancel={back}
         onSave={save}/>}
+        {mode === SAVING && <Status/>}
     </article>
 
   )
