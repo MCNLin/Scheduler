@@ -12,13 +12,14 @@ export default function useApplicationData () {
     interviewers: {}
     
   });
-
+  // 
   const fetchFreeSpace = (appointments) => { 
     const appIDs = state.days.filter(day => day.name === state.day);
     const todayApp = appIDs[0].appointments;
     const freeSpace = todayApp.filter(app => !appointments[app].interview).length
     return freeSpace 
   }
+  
   
   function bookInterview(id, interview) {
     console.log(id, interview);
