@@ -10,11 +10,12 @@ import useVisualMode from "hooks/useVisualMode";
 import 'components/Appointment/styles.scss'
 
 const EMPTY = 'EMPTY';
-const SHOW = 'SHOW'
-const CREATE = 'CREATE'
+const SHOW = 'SHOW';
+const CREATE = 'CREATE';
+
 
 export default function Appointment(props) {
-
+// console.log("props.interview in INDEX---->", props.interview)
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   )
@@ -24,9 +25,9 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-    props.bookInterview(props.id, interview);
-
-    transition(SHOW);
+        
+    props.bookInterview(props.id, interview)
+    .then(()=> transition(SHOW));
   }
 
   return (
