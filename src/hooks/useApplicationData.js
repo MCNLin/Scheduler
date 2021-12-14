@@ -1,29 +1,28 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function useApplicationData () {
+export default function useApplicationData() {
 
-  
-  
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    appointments:{},
+    appointments: {},
     interviewers: {}
-    
+
   });
   // 
-  const fetchFreeSpace = (appointments) => { 
+  const fetchFreeSpace = (appointments) => {
     const appIDs = state.days.filter(day => day.name === state.day);
+    console.log("appIDs=====>", appIDs)
     const todayApp = appIDs[0].appointments;
     const freeSpace = todayApp.filter(app => !appointments[app].interview).length
-    return freeSpace 
+    return freeSpace
   }
-  
-  
+
+
   function bookInterview(id, interview) {
     console.log(id, interview);
-    
+
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -34,45 +33,47 @@ export default function useApplicationData () {
     };
 
 
-    const days = [...state.days,  
+    const days = [...state.days,
     ]
 
-    const dayIndex = state.days.findIndex((day) => 
+    const dayIndex = state.days.findIndex((day) =>
       day.appointments.includes(id)
     )
-    
+
     days[dayIndex].spots = fetchFreeSpace(appointments)
 
     return axios.put(`/api/appointments/${id}`, appointment)
-    .then(()=> {
-      setState({...state, appointments, days})
-    }) 
+      .then(() => {
+        setState(prev => ({...prev, appointments, days}));
+    })
   }
-  
+
   function cancelInterview(id) {
-    const appointment = {...state.appointments[id],
+    const appointment = {
+      ...state.appointments[id],
       interview: null
     };
-    const appointments = {...state.appointments,
+    const appointments = {
+      ...state.appointments,
       [id]: appointment
     };
 
-    const days = [...state.days,  
+    const days = [...state.days,
     ]
 
-    const dayIndex = state.days.findIndex((day) => 
+    const dayIndex = state.days.findIndex((day) =>
       day.appointments.includes(id)
     )
-    
+
     days[dayIndex].spots = fetchFreeSpace(appointments)
     return axios.delete(`api/appointments/${id}`)
-    .then(() => {
-      setState({...state, appointments, days})
-    }) 
+      .then(() => {
+        setState(prev => ({...prev, appointments, days}));
+    })
 
 
   }
-  
+
   const setDay = day => setState({ ...state, day });
 
   useEffect(() => {
@@ -81,14 +82,15 @@ export default function useApplicationData () {
       axios.get(`/api/appointments`),
       axios.get(`/api/interviewers`)
     ])
-    .then((all)=> {
-      setState(prev => ({...prev, 
-        days: all[0].data, 
-        appointments: all[1].data,
-        interviewers: all[2].data
-      }))
-      // console.log('RESULTS',all)
-    })
-  },[]);
+      .then((all) => {
+        setState(prev => ({
+          ...prev,
+          days: all[0].data,
+          appointments: all[1].data,
+          interviewers: all[2].data
+        }))
+      })
+  }, []);
+
   return { state, setDay, bookInterview, cancelInterview }
 }
