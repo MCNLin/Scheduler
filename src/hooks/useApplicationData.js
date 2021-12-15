@@ -13,7 +13,7 @@ export default function useApplicationData() {
   // 
   const fetchFreeSpace = (appointments) => {
     const appIDs = state.days.filter(day => day.name === state.day);
-    console.log("appIDs=====>", appIDs)
+
     const todayApp = appIDs[0].appointments;
     const freeSpace = todayApp.filter(app => !appointments[app].interview).length
     return freeSpace
@@ -44,8 +44,8 @@ export default function useApplicationData() {
 
     return axios.put(`/api/appointments/${id}`, appointment)
       .then(() => {
-        setState(prev => ({...prev, appointments, days}));
-    })
+        setState(prev => ({ ...prev, appointments, days }));
+      })
   }
 
   function cancelInterview(id) {
@@ -68,8 +68,8 @@ export default function useApplicationData() {
     days[dayIndex].spots = fetchFreeSpace(appointments)
     return axios.delete(`api/appointments/${id}`)
       .then(() => {
-        setState(prev => ({...prev, appointments, days}));
-    })
+        setState(prev => ({ ...prev, appointments, days }));
+      })
 
 
   }
