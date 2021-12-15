@@ -17,16 +17,4 @@ export default function Button(props) {
       </button>
    )
 }
-
-
-
-
-
-//REFACTORED line 6-10
-   // if (props.confirm) {
-   //   buttonClass += " button--confirm";
-   // }
-   // if (props.danger) {
-   //    buttonClass += " button--danger"
-   // }
    
