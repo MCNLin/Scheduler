@@ -15,7 +15,7 @@ export default function useApplicationData() {
 
     const appIDs = state.days.filter(day => day.name === state.day);
     const todayApp = appIDs[0].appointments;
-    const freeSpace = todayApp.filter(app => !appointments[app].interview).length
+    const freeSpace = todayApp.filter(app => !appointments[app].interview).length;
     return freeSpace
   }
 
@@ -33,23 +33,23 @@ export default function useApplicationData() {
     };
 
 
-    const days = [...state.days
-    ]
+      const days = [...state.days,
+        ]
 
-    const dayIndex = state.days.findIndex((day) =>
-      day.appointments.includes(id)
-    )
+      const dayIndex = state.days.findIndex((day) =>
+        day.appointments.includes(id)
+      )
 
-    const spots = fetchFreeSpace(state, appointments)
+      const spots = fetchFreeSpace(state, appointments)
 
-    const newDay = {
-      ...days[dayIndex], spots
-    }
+      const newDay = {
+        ...days[dayIndex], spots
+      }
 
-    days[dayIndex] = newDay
+      days[dayIndex] = newDay
 
-    return axios.put(`/api/appointments/${id}`, appointment)
-      .then(() => {
+        return axios.put(`/api/appointments/${id}`, appointment)
+        .then(() => {
         setState(prev => ({ ...prev, appointments, days }));
       })
   }
@@ -65,27 +65,25 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
-    const days = [...state.days
-    ]
+      const days = [...state.days,
+      ]
 
-    const dayIndex = state.days.findIndex((day) =>
-      day.appointments.includes(id)
-    )
+      const dayIndex = state.days.findIndex((day) =>
+        day.appointments.includes(id)
+      )
 
-    const spots = fetchFreeSpace(state, appointments)
+      const spots = fetchFreeSpace(state, appointments)
 
-    const newDay = {
-      ...days[dayIndex], spots
-    }
+      const newDay = {
+        ...days[dayIndex], spots
+      }
 
-    days[dayIndex] = newDay
+      days[dayIndex] = newDay
 
-    return axios.delete(`api/appointments/${id}`)
-      .then(() => {
+        return axios.delete(`api/appointments/${id}`)
+        .then(() => {
         setState(prev => ({ ...prev, appointments, days }));
       })
-
-
   }
 
   const setDay = day => setState({ ...state, day });
