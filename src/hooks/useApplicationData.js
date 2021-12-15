@@ -11,15 +11,15 @@ export default function useApplicationData() {
 
   });
   // 
-  const fetchFreeSpace = (appointments) => {
-    const appIDs = state.days.filter(day => day.name === state.day);
+  const fetchFreeSpace = (state, appointments) => {
 
+    const appIDs = state.days.filter(day => day.name === state.day);
     const todayApp = appIDs[0].appointments;
     const freeSpace = todayApp.filter(app => !appointments[app].interview).length
     return freeSpace
   }
 
-
+  // book appointment & updates spots available
   function bookInterview(id, interview) {
     console.log(id, interview);
 
@@ -33,14 +33,20 @@ export default function useApplicationData() {
     };
 
 
-    const days = [...state.days,
+    const days = [...state.days
     ]
 
     const dayIndex = state.days.findIndex((day) =>
       day.appointments.includes(id)
     )
 
-    days[dayIndex].spots = fetchFreeSpace(appointments)
+    const spots = fetchFreeSpace(state, appointments)
+
+    const newDay = {
+      ...days[dayIndex], spots
+    }
+
+    days[dayIndex] = newDay
 
     return axios.put(`/api/appointments/${id}`, appointment)
       .then(() => {
@@ -48,6 +54,7 @@ export default function useApplicationData() {
       })
   }
 
+  //deletes/cancels interview and updates spots accordingly
   function cancelInterview(id) {
     const appointment = {
       ...state.appointments[id],
@@ -58,14 +65,21 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
-    const days = [...state.days,
+    const days = [...state.days
     ]
 
     const dayIndex = state.days.findIndex((day) =>
       day.appointments.includes(id)
     )
 
-    days[dayIndex].spots = fetchFreeSpace(appointments)
+    const spots = fetchFreeSpace(state, appointments)
+
+    const newDay = {
+      ...days[dayIndex], spots
+    }
+
+    days[dayIndex] = newDay
+
     return axios.delete(`api/appointments/${id}`)
       .then(() => {
         setState(prev => ({ ...prev, appointments, days }));
