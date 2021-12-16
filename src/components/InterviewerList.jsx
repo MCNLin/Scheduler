@@ -4,9 +4,10 @@ import InterviewerListItem from "./InterviewerListItem";
 
 import 'components/InterviewerList.scss';
 
+/*Displays the available interviewers on the given day w/ avatar*/
+
 export default function InterviewerList(props) {
   
-  // console.log("props in interviewlist====>" , props)
   const interviewerArray = props.interviewers.map((interviewer) => {
     
     return (

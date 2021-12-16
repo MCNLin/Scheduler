@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import "components/InterviewerListItem.scss"
 
-/*Displays the available interviewers on the given day w/ avatar*/
+/*Displays individual interviewer*/
 
 export default function InterviewListItem (props) {
   
