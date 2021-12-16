@@ -3,6 +3,8 @@ import classNames from 'classnames'
 
 import "components/DayListItem.scss"
 
+/*Displays selected day with appointment availability*/
+
 export default function DayListItem(props) {
   let dayClass = classNames('day-list__item', {
     'day-list__item--selected': props.selected,

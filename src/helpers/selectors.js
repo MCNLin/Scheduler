@@ -38,16 +38,14 @@ export function getInterviewersForDay(state, day) {
   const filteredDay = state.days.find(days => days.name === day);
 
   let interviewersArr = [];
-
-  // console.log("filterDay------------->", filteredDay)  
+ 
   if (filteredDay) {
     interviewersArr = filteredDay.interviewers.map((id) => {
-      // console.log('interviewers on line 45' , interviewersArr)
+      
       return state.interviewers[id];
     });
     
   }
   
-  // console.log('interviewers,', interviewersArr)
   return interviewersArr;
 };
