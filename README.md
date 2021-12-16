@@ -7,6 +7,7 @@
 * Users can book between Monday and Friday and can navigate throughout the week
 !["Overview"](https://github.com/MCNLin/Scheduler/blob/main/public/gifs/overview.gif)
 
+* 
 
 ## Technical Specifications
 
