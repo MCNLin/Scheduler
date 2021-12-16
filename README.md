@@ -39,7 +39,7 @@ To cancel a meeting because something came up? Simply click that trashcan icon t
 * Axios
 * Storybook, Webpack Dev Server, Jest, Testing Library
 * Cypress
-* className
+* Classnames
 
 ## Setup
 
