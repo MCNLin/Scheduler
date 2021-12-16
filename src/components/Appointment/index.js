@@ -10,6 +10,7 @@ import Error from "./Error";
 
 import 'components/Appointment/styles.scss'
 
+//modes
 const EMPTY = 'EMPTY';
 const SHOW = 'SHOW';
 const CREATE = 'CREATE';
@@ -37,9 +38,7 @@ export default function Appointment(props) {
 
   //saving an appointment
   function save(name, interviewer) {
-    // if (!name || !interviewer) {
-    //   return;
-    // }
+  
     const interview = {
       student: name,
       interviewer

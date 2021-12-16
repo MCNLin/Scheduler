@@ -1,5 +1,7 @@
 import React from "react";
 
+/*Displays student and interviewer when conditions are met*/
+
 export default function Show(props) {
   return (
     <main className="appointment__card appointment__card--show">
