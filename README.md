@@ -4,6 +4,7 @@
 
 ## Features
 
+!["Overview"](https://github.com/MCNLin/Scheduler/blob/main/public/gifs/overview.gif)
 
 
 ## Technical Specifications
