@@ -1,5 +1,20 @@
 # Interview Scheduler
 
+### An intuitive scheduling application to book interviews!
+
+## Features
+
+
+
+## Technical Specifications
+
+* React
+* Webpack, Babel
+* Axios
+* Storybook, Webpack Dev Server, Jest, Testing Library
+* Cypress
+* className
+
 ## Setup
 
 Install dependencies with `npm install`.
