@@ -1,9 +1,10 @@
 import { useState } from "react";
 
+//custom hook to 
 export default function useVisualMode(initial) {
-
+  
   const [history, setHistory] = useState([initial])
-
+  //transition function to be able to advance to any other mode
   const transition = (newMode, replace = false) => {
   
     setHistory((prev) => {
@@ -16,7 +17,7 @@ export default function useVisualMode(initial) {
     });
 
   };
-
+  //back function to allow to return previous mode
   const back = () => {
   
     if (history.length < 2) {
@@ -28,6 +29,7 @@ export default function useVisualMode(initial) {
       return newHistory
     });
   };
+  //mode state
   const mode = history[history.length - 1];
   return { transition, back, mode };
 };
