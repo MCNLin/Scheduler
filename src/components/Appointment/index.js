@@ -51,16 +51,16 @@ export default function Appointment(props) {
       .catch(() => transition(ERROR_SAVE, true));
   };
   //deleting an appointment
-  function deleteApp(name, interviewer) {
+  function deleteApp() {
 
-    transition(DELETING, true)
+    transition(DELETING, true);
 
     props.cancelInterview(props.id)
       .then(() => {
         transition(EMPTY)
       })
-      .catch(() => transition(ERROR_DELETE, true))
-  }
+      .catch(() => transition(ERROR_DELETE, true));
+  };
 
 
   return (
