@@ -26,7 +26,7 @@ If you accidently made a mistake, that's ok! You can hit that edit button on the
 
 -----------------------------------------------------------------
 
-To cancel a meeting because something came up? Simply click that trashcan icon to delete it!
+Need to cancel a meeting because something came up? Simply click that trashcan icon to delete it!
 
 !["Delete"](https://github.com/MCNLin/Scheduler/blob/main/public/gifs/delete.gif)
 
@@ -67,3 +67,10 @@ npm run storybook
 ```sh
 npm run cypress
 ```
+
+<!-- Testing was done with several different testing frameworks with 97.75% code coverage.
+
+Static testing with Prop-types
+Unit testing with Storybook
+Unit and Integration testing with Jest and Testing Library
+End to end testing with Cypress -->
