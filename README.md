@@ -3,22 +3,29 @@
 ### An intuitive scheduling application to book interviews!
 
 ## Features
-
-##### Looking to book an interview? With Interview Scheduler you can book between Monday and Friday and can navigate each day throughout the week!
+-----------------------------------------------------------------
+Looking to book an interview? With Interview Scheduler you can book between Monday and Friday and can navigate each day and see what how many spots are available!
 
 !["Overview"](https://github.com/MCNLin/Scheduler/blob/main/public/gifs/overview.gif)
 
-##### To book an interview, its as simple as clicking on the "+" icon, and inputting your name and selecting an interviewer that is available during that time slot. 
+----------------------------------------------------------------
+
+To book an interview, its as simple as clicking on the "+" icon, and inputting your name and selecting an interviewer that is available during that time slot. 
 
 !["Create"](https://github.com/MCNLin/Scheduler/blob/main/public/gifs/create.gif)
 
-##### If you accidently made a mistake, that's ok! You can hit that edit button on the bottom right hand corner, and make the changes you need.
+Just make sure to enter a valid name or else an error will occur!
+
+!["Invalid"]
+
+If you accidently made a mistake, that's ok! You can hit that edit button on the bottom right hand corner, and make the changes you need.
 
 !["Edit"](https://github.com/MCNLin/Scheduler/blob/main/public/gifs/edit.gif)
 
-##### To cancel a meeting because something came up? Simply click that trashcan icon to delete it!
+To cancel a meeting because something came up? Simply click that trashcan icon to delete it!
 
 !["Delete"](https://github.com/MCNLin/Scheduler/blob/main/public/gifs/delete.gif)
+
 
 
 ## Technical Specifications
@@ -50,4 +57,9 @@ npm test
 
 ```sh
 npm run storybook
+```
+## Running Cypress Test Server
+
+```sh
+npm run cypress
 ```
